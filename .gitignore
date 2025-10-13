@@ -1,0 +1,12 @@
+# Server-specific files that should NOT be in GitHub
+/back_up/
+/back_up_V2/
+/error/
+/expunge/
+/logs/
+/uploads/
+/result/
+/ref/
+/union/
+/ldsc/                    # If this contains large LD reference data
+/consilience_gwas_script/ # If this has server-specific configs

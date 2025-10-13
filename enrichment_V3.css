@@ -1,0 +1,505 @@
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #071952;
+    margin: 0;
+    padding: 0;
+    background-color: #EBF4F6;
+    overflow-x: hidden; /* Prevent horizontal scrollbar */
+    box-sizing: border-box; /* Ensure padding doesn't cause overflow */
+}
+
+a {
+    text-decoration: none;
+    color: #071952;
+}
+
+header {
+    background: transparent; /* Initial transparent background */
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky; /* Make the header sticky */
+    top: 0; /* Stick to the top of the viewport */
+    z-index: 1000; /* Ensure it stays on top of other content */
+    width: 100%;
+    transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition for background color and shadow */
+}
+
+header.scrolled {
+    background-color: #EBF4F6; /* Background color after scrolling past hero section */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow for better visibility */
+}
+
+header .logo ion-icon {
+    font-size: 50px; /* Adjust size to match the original logo height */
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li {
+    margin: 0 15px;
+}
+
+header nav ul li:last-child {
+    margin-right: 30px; /* Add extra space after the last item (Contact) */
+}
+
+header nav ul li a {
+    color: #071952; /* Dark navy text for links */
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+header nav ul li a:hover {
+    color: #088395; /* Darker teal on hover */
+}
+
+
+/* font-family:georgia,garamond,serif;font-size:17px */
+
+#features {
+    background-color: #37B7C3; /* Primary color for features section */
+    padding: 2rem 1rem;
+    color: white; /* White text for contrast */
+    text-align: center;
+    box-sizing: border-box; /* Ensure padding doesn't cause overflow */
+}
+
+.features-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.feature-card {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    max-width: 250px; /* Use max-width instead of width to be more flexible */
+    text-align: center;
+    color: #071952; /* Dark navy text */
+}
+
+.feature-card ion-icon {
+    font-size: 50px; /* Adjust icon size as needed */
+    color: #071952; /* Dark navy color */
+    margin-bottom: 1rem; /* Space between icon and text */
+}
+
+.features-description {
+    font-family: georgia, garamond, serif;
+    font-size: 20px;
+    text-align: left; /* Align text to the left */
+    margin-top: 1rem; /* Space above the paragraph */
+    color: white; /* Optional: Change color to white to match the section */
+}
+
+
+#how-it-works {
+    background-color: #37B7C3; /* Primary color for how it works section */
+    padding: 2rem 1rem;
+    color: white; /* White text for contrast */
+    text-align: center;
+    box-sizing: border-box; /* Ensure padding doesn't cause overflow */
+}
+
+.steps-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.step {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    max-width: 250px; /* Use max-width instead of width to be more flexible */
+    text-align: center;
+    color: #071952; /* Dark navy text */
+}
+
+.step ion-icon {
+    font-size: 50px; /* Adjust icon size as needed */
+    color: #071952; /* Dark navy color */
+    margin-bottom: 1rem; /* Space between icon and text */
+}
+
+#resources {
+    background-color: #37B7C3; /* Primary color for resources section */
+    padding: 2rem 1rem;
+    color: #EBF4F6; /* Dark navy text for contrast */
+    text-align: center;
+    box-sizing: border-box; /* Ensure padding doesn't cause overflow */
+}
+
+.resources-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.resource-card {
+    background-color: white; /* Background color for card */
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    max-width: 250px; /* Use max-width instead of width to be more flexible */
+    text-align: center;
+    color: #071952; /* Dark navy text */
+}
+
+.resource-card h3 {
+    margin-top: 0;
+}
+
+.resource-link {
+    color: #37B7C3; /* Primary color for link text */
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Make text clickable */
+    cursor: pointer; /* Show pointer cursor on hover */
+    margin-top: 1rem; /* Add space between title and text */
+    font-size: 0.9rem; /* Adjust font size as needed */
+}
+
+.resource-link:hover {
+    color: #088395; /* Darker teal on hover */
+    text-decoration: underline; /* Optional: underline text on hover */
+}
+
+#faq-list.hidden {
+    display: none;
+}
+
+#faq-toggle {
+    background-color: #37B7C3; /* Primary color for the FAQ toggle button */
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#faq-toggle:hover {
+    background-color: #088395; /* Darker teal on hover */
+}
+
+/* Footer Container */
+footer {
+    background-color: #071952; /* Dark navy for footer */
+    color: white;
+    padding: 0.005rem 1rem;
+    text-align: center;
+    box-sizing: border-box; /* Ensure padding doesn't cause overflow */
+}
+
+/* Footer Links Styling */
+.footer-links, .footer-social, .footer-contact, .newsletter-signup {
+    margin: 1rem 0;
+}
+
+.footer-link {
+    color: white;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+.footer-link:hover {
+    color: #37B7C3; /* Primary color on hover */
+}
+
+/* Social Media Icons Styling */
+.footer-social a {
+    margin: 0 10px;
+}
+
+.footer-social ion-icon {
+    font-size: 30px; /* Adjust size as needed */
+    color: white; /* Color of the social media icons */
+}
+
+/* Specific Visit Count Styling */
+#visits {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.2rem;
+    float: right;
+    letter-spacing: 3px;
+}
+
+
+.newsletter-signup input {
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: none;
+    margin-right: 10px;
+}
+
+.newsletter-signup .cta-btn {
+    background-color: #37B7C3; /* Primary color for newsletter CTA */
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.newsletter-signup .cta-btn:hover {
+    background-color: #088395; /* Darker teal on hover */
+}
+
+.icon {
+    width: 80px; /* Adjust the size as needed */
+    height: auto; /* Maintain aspect ratio */
+    color: #071952; /* This property can be removed as it's not applicable for images */
+    margin-bottom: 1rem; /* Space between icon and text */
+}
+
+
+.logo_label img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 30%;
+}
+
+
+/* Interesting Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+
+.logo_label p {
+    font-family: 'Raleway', sans-serif; /* Apply the Raleway font to the whole paragraph */
+    margin: 10px 0; /* Add some spacing */
+    text-align: center; /* Center the text */
+}
+
+/* Larger and bold style for WebESPGS */
+.webespgs {
+    font-size: 25px; /* Larger font size */
+    font-weight: 700; /* Bold */
+    color: #333; /* Dark color for the title */
+}
+
+/* Subtitle style (smaller and normal weight) */
+.subtitle {
+    font-size: 23px; /* Slightly smaller size */
+    font-weight: 600; /* Normal weight */
+    color: #666; /* A lighter gray to contrast */
+}
+
+
+
+
+/* Styles for Latest Updates Section */
+.updated-box {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+    text-align: left; /* Align text to the left for readability */
+}
+
+.latest-wrapper .row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.time {
+    font-weight: bold;
+    color: #071952;
+}
+
+.desc {
+    flex-grow: 1;
+    padding-left: 1rem;
+    color: #071952;
+}
+
+.updated-box h3 {
+    color: #071952; /* Match header color */
+}
+
+.updated-box a {
+    color: #37B7C3; /* Link color */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.updated-box a:hover {
+    color: #088395; /* Darker teal on hover */
+    text-decoration: underline; /* Optional: underline on hover */
+}
+
+
+/* Basic styles for header */
+
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: transparent;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: top 0.3s;
+    z-index: 1000;
+    height: 80px; /* Increase the height as needed */
+    display: flex;
+    align-items: center;
+    padding: 0 20px; /* Add padding if necessary */
+}
+
+
+
+/* Styles for hidden state */
+.hidden {
+    top: -100px; /* Adjust based on the height of your header */
+}
+
+/* Other styles for navigation bar */
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    padding: 1rem 0;
+    margin: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+}
+
+nav ul li a:hover {
+    color: #007BFF;
+}
+
+
+.image-scroll-container {
+	overflow-x: auto; /* Enable horizontal scrolling */
+	white-space: nowrap; /* Prevent wrapping of child elements */
+	max-width: 100%; /* Adjust the maximum width as needed */
+}
+
+.image-scroll-container img {
+	max-width: none; /* Prevent the image from being resized */
+	height: auto; /* Maintain aspect ratio */
+}
+.resized-image {
+	width: 120%; /* Adjust width percentage to make the image smaller */
+	height: auto; /* Keep aspect ratio intact */
+}
+
+
+
+
+
+/* Style the tab container */
+.tab {
+  display: flex;
+  flex-wrap: wrap; /* Allows buttons to wrap on smaller screens */
+  justify-content: flex-start; /* Aligns buttons to the left */
+  #padding: 5px 0; /* Minimal padding for compact look */
+  #background-color: #f8f9fa;
+  #border-bottom: 1px solid #ccc;
+  margin-left: 10px; /* Shift slightly to the left */
+  margin-right: 25px; /* Prevents cutting off on the right side */
+  #box-sizing: border-box;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 8px 14px;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 15px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.2s;
+  margin: 4px; /* Small margin for spacing around buttons */
+  flex: 1 1 auto; /* Ensures flexible width */
+  white-space: nowrap; /* Prevents text wrapping inside button */
+}
+
+/* Active button style */
+.tab button.active {
+  background-color: #0056b3;
+  box-shadow: inset 0px 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+#hero {
+    background-color: #EBF4F6;
+    color: #071952;
+    text-align: left; /* Align text to the left */
+    box-sizing: border-box;
+    margin: 6rem auto 0rem auto;
+    padding: 20px 20px 20px 20px; /* Smaller top padding */
+}
+
+.hero-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1700px;
+    width: 100%;
+    padding: 10px;
+}
+
+.hero-text {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.hero-description {
+    font-family: Georgia, serif;
+    font-size: 18px;
+    color: #000;
+    line-height: 1.6;
+    text-align: left;
+    margin-bottom: 1rem;
+	padding-right: 20px
+	max-width: 80%;              /* Make text block take up more space, leaving some space on the right */
+    margin-right: 20px;          /* Add space on the right side of the text */
+}
+
+.hero-image-container {
+    flex: 0 0 40%;
+    display: flex;
+}
+
+.hero-image {
+    width: 450px;                /* Increase the width of the image */
+    height: auto;                /* Maintain the image's aspect ratio */
+    margin-left: 10px;           /* Increase space between the image and text */
+    margin-bottom: 20px;         /* Increase space below the image */
+    border-radius: 15px;         /* Rounds the corners of the image */
+    filter: brightness(1.1) saturate(0.7) sepia(0.3); /* Applies filters for brightness, saturation, and sepia effect */
+    float: right;                /* Floats the image to the right */
+}
