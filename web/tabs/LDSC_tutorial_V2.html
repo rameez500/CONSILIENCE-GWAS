@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stratified LDSC Tutorial</title>
+    <style>
+        /* Scoped styles to prevent conflicts */
+        #ldsc-content * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        #ldsc-content {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        #ldsc-content .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        #ldsc-content h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        #ldsc-content .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            text-align: center;
+            color: #7f8c8d;
+        }
+        
+        #ldsc-content section {
+            padding: 2rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        #ldsc-content h2 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.5rem;
+        }
+        
+        #ldsc-content h3 {
+            color: #3498db;
+            margin: 1.5rem 0 1rem;
+        }
+        
+        #ldsc-content p {
+            margin-bottom: 1rem;
+        }
+        
+        #ldsc-content .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #3498db;
+        }
+
+        #ldsc-content .consilience-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #e74c3c;
+            background: linear-gradient(135deg, #fff5f5, #ffffff);
+        }
+        
+        #ldsc-content .highlight {
+            background-color: #e1f5fe;
+            border-left: 4px solid #3498db;
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        #ldsc-content .consilience-highlight {
+            background: linear-gradient(135deg, #ffeaa7, #fab1a0);
+            border-left: 4px solid #e74c3c;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        #ldsc-content .concept-box {
+            display: flex;
+            align-items: center;
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        
+        #ldsc-content .concept-icon {
+            font-size: 2.5rem;
+            margin-right: 1.5rem;
+            color: #3498db;
+        }
+
+        #ldsc-content .consilience-icon {
+            font-size: 2.5rem;
+            margin-right: 1.5rem;
+            color: #e74c3c;
+        }
+        
+        #ldsc-content .concept-content {
+            flex: 1;
+        }
+        
+        #ldsc-content .step {
+            display: flex;
+            margin-bottom: 2rem;
+            align-items: flex-start;
+        }
+        
+        #ldsc-content .step-number {
+            background-color: #3498db;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+            font-weight: bold;
+        }
+
+        #ldsc-content .consilience-step-number {
+            background-color: #e74c3c;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+            font-weight: bold;
+        }
+        
+        #ldsc-content .step-content {
+            flex: 1;
+        }
+        
+        #ldsc-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        #ldsc-content th, #ldsc-content td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        #ldsc-content th {
+            background-color: #f2f2f2;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        
+        #ldsc-content tr:hover {
+            background-color: #f9f9f9;
+        }
+        
+        #ldsc-content .resources-list {
+            list-style-type: none;
+        }
+        
+        #ldsc-content .resources-list li {
+            margin-bottom: 0.5rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        #ldsc-content .resources-list a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        #ldsc-content .resources-list a:hover {
+            text-decoration: underline;
+        }
+        
+        #ldsc-content code {
+            background: #f4f4f4;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #c7254e;
+        }
+
+        #ldsc-content .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        #ldsc-content .feature-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-left: 4px solid #3498db;
+        }
+
+        #ldsc-content .window-options {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        #ldsc-content .window-option {
+            display: flex;
+            align-items: center;
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            background: white;
+            border-radius: 4px;
+            border-left: 3px solid #28a745;
+        }
+
+        @media (max-width: 768px) {
+            #ldsc-content .concept-box {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            #ldsc-content .concept-icon {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+
+            #ldsc-content .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="ldsc-content">
+        <div class="container">
+            <h1>Stratified LD Score Regression (LDSC)</h1>
+            <p class="subtitle">A beginner-friendly guide to understanding how LDSC partitions heritability across functional genomic annotations</p>
+            
+            <section id="what-is">
+                <h2>What is Stratified LD Score Regression?</h2>
+                
+                <div class="concept-box">
+                    <div class="concept-icon">🧬</div>
+                    <div class="concept-content">
+                        <h3>Understanding Heritability</h3>
+                        <p>Heritability measures how much of the variation in a trait (like height or disease risk) is due to genetic differences between people. LDSC helps us understand which parts of the genome contribute to this heritability.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3>The Problem with Standard GWAS</h3>
+                    <p>Standard Genome-Wide Association Studies (GWAS) identify individual genetic variants associated with traits. However, they don't tell us:</p>
+                    <ul>
+                        <li>Which functional categories of the genome are most important</li>
+                        <li>How heritability is distributed across different genomic annotations</li>
+                        <li>Whether certain cell types or tissues play a bigger role</li>
+                    </ul>
+                </div>
+                
+                <div class="highlight">
+                    <p><strong>Stratified LDSC</strong> extends basic LDSC by partitioning heritability across different functional categories (annotations) in the genome, allowing us to understand which genomic features contribute most to trait heritability.</p>
+                </div>
+            </section>
+            
+            <section id="how-works">
+                <h2>How Stratified LDSC Works</h2>
+                
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Linkage Disequilibrium (LD)</h3>
+                        <p>LD refers to the non-random association of alleles at different loci. In simple terms, genetic variants that are close together on a chromosome tend to be inherited together.</p>
+                        <p>LD Score measures how much a SNP is correlated with other SNPs in the genome.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Stratification by Annotations</h3>
+                        <p>We divide the genome into different functional categories (annotations), such as:</p>
+                        <ul>
+                            <li>Protein-coding regions</li>
+                            <li>Regulatory elements (promoters, enhancers)</li>
+                            <li>Conserved regions</li>
+                            <li>Cell-type-specific chromatin marks</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Regression Model</h3>
+                        <p>Stratified LDSC uses a regression model where the GWAS χ² statistics are regressed against LD scores from each annotation category:</p>
+                        <p><code>E[χ²] ≈ N * Σ (τ_c * ℓ(c)) + a + 1</code></p>
+                        <p>Where:</p>
+                        <ul>
+                            <li><strong>N</strong>: Sample size</li>
+                            <li><strong>τ_c</strong>: Per-SNP heritability for annotation c</li>
+                            <li><strong>ℓ(c)</strong>: LD Score for annotation c</li>
+                            <li><strong>a</strong>: Intercept (accounts for confounding)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3>Key Insight</h3>
+                    <p>If an annotation is enriched for heritability, SNPs in that annotation will have higher χ² statistics than expected based on their LD scores alone. This allows us to quantify how much each annotation contributes to trait heritability.</p>
+                </div>
+            </section>
+
+            <section id="consilience-workflow">
+                <h2>Stratified LDSC Workflow in CONSILIENCE-GWAS</h2>
+                
+                <div class="consilience-highlight">
+                    <h3>🚀 Automated S-LDSC Pipeline</h3>
+                    <p>CONSILIENCE-GWAS implements a complete stratified LDSC workflow that automatically processes your inputs and generates comprehensive enrichment analysis with built-in quality control.</p>
+                </div>
+
+                <div class="consilience-card">
+                    <h3>Step 1: Input Preparation & Quality Control</h3>
+                    
+                    <div class="step">
+                        <div class="consilience-step-number">1</div>
+                        <div class="step-content">
+                            <h4>GWAS Summary Statistics</h4>
+                            <p>Upload standard GWAS output files containing SNP information, effect sizes, standard errors, and p-values. CONSILIENCE-GWAS automatically performs quality control including:</p>
+                            <ul>
+                                <li>Filtering ambiguous SNPs (A/T, G/C)</li>
+                                <li>Restricting to HapMap3 variants for improved data quality</li>
+                                <li>Validating file format and required columns</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="consilience-step-number">2</div>
+                        <div class="step-content">
+                            <h4>Gene Set Selection</h4>
+                            <p>Choose from thousands of curated gene sets via GeneWeaver integration or upload custom gene lists. Gene sets are automatically mapped to human orthologs using biomaRt.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="consilience-card">
+                    <h3>Step 2: Annotation Creation & LD Score Computation</h3>
+                    
+                    <div class="step">
+                        <div class="consilience-step-number">3</div>
+                        <div class="step-content">
+                            <h4>Gene-to-SNP Mapping</h4>
+                            <p>Gene sets are converted to genomic annotations using flexible window sizes around each gene:</p>
+                            <div class="window-options">
+                                <div class="window-option">
+                                    <strong>10-100 kb upstream/downstream:</strong> Captures promoter regions and nearby regulatory elements
+                                </div>
+                                <div class="window-option">
+                                    <strong>User-configurable:</strong> Adjust window size based on trait biology and regulatory landscape
+                                </div>
+                            </div>
+                            <p>This approach captures both coding regions and regulatory elements associated with each gene.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="consilience-step-number">4</div>
+                        <div class="step-content">
+                            <h4>LD Score Computation</h4>
+                            <p>Stratified LD scores are calculated for each annotation category using:</p>
+                            <ul>
+                                <li>1000 Genomes Phase 3 European ancestry reference panel</li>
+                                <li>53 baseline functional annotations for comprehensive control</li>
+                                <li>HapMap3 SNPs with MAF > 5% and imputation INFO ≥ 0.9</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="consilience-card">
+                    <h3>Step 3: Regression Modeling & Enrichment Analysis</h3>
+                    
+                    <div class="step">
+                        <div class="consilience-step-number">5</div>
+                        <div class="step-content">
+                            <h4>Stratified LDSC Regression</h4>
+                            <p>The model is fitted using S-LDSC version 1.0.1 with all annotations included simultaneously:</p>
+                            <p><code>E[χ²] = N * Σ(τ_c * ℓ(j,c)) + a + 1</code></p>
+                            <p>Where τ_c represents the contribution of annotation c to per-SNP heritability, controlling for all other annotations.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="consilience-step-number">6</div>
+                        <div class="step-content">
+                            <h4>Three Analysis Models</h4>
+                            <p>CONSILIENCE-GWAS automatically runs three complementary models:</p>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Model</th>
+                                        <th>Purpose</th>
+                                        <th>Output</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Joint Model</strong></td>
+                                        <td>Partitions heritability into unique and overlapping components</td>
+                                        <td>Unique, intersection, and background contributions</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Union Model</strong></td>
+                                        <td>Tests combined effect of all gene sets</td>
+                                        <td>Cumulative enrichment across all sets</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Individual Model</strong></td>
+                                        <td>Tests each gene set separately</td>
+                                        <td>Set-specific enrichment estimates</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="consilience-card">
+                    <h3>Step 4: Results Interpretation & Output</h3>
+                    
+                    <div class="step">
+                        <div class="consilience-step-number">7</div>
+                        <div class="step-content">
+                            <h4>Enrichment Statistics</h4>
+                            <p>For each annotation, CONSILIENCE-GWAS calculates:</p>
+                            <div class="feature-grid">
+                                <div class="feature-item">
+                                    <h4>📈 Enrichment Coefficient</h4>
+                                    <p><strong>τ = (h²_c/M_c) / (h²_total/M_total)</strong><br>Measures how concentrated heritability is in the annotation</p>
+                                </div>
+                                <div class="feature-item">
+                                    <h4>📊 Proportion of h²</h4>
+                                    <p>Percentage of total SNP heritability explained by the annotation</p>
+                                </div>
+                                <div class="feature-item">
+                                    <h4>🎯 P-values</h4>
+                                    <p>Statistical significance with FDR correction (q < 0.05)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="consilience-step-number">8</div>
+                        <div class="step-content">
+                            <h4>Multiple Testing Correction</h4>
+                            <p>All results include comprehensive multiple testing protection:</p>
+                            <ul>
+                                <li><strong>False Discovery Rate (FDR):</strong> q < 0.05 threshold for significance</li>
+                                <li><strong>Bonferroni correction:</strong> For cell-type analyses (P < 0.05/10 = 0.005)</li>
+                                <li><strong>Standard errors:</strong> Confidence intervals for all estimates</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="highlight">
+                    <h3>Key CONSILIENCE-GWAS Features</h3>
+                    <ul>
+                        <li><strong>Automated quality control:</strong> HapMap3 filtering and data validation</li>
+                        <li><strong>Flexible gene windows:</strong> 10-100 kb around genes to capture regulatory regions</li>
+                        <li><strong>Comprehensive baselines:</strong> 53 functional annotations for proper control</li>
+                        <li><strong>Multiple modeling approaches:</strong> Joint, union, and individual analyses</li>
+                        <li><strong>Built-in multiple testing correction:</strong> FDR and Bonferroni protection</li>
+                        <li><strong>Cross-species integration:</strong> Direct GeneWeaver gene set access</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section id="applications">
+                <h2>Applications in CONSILIENCE-GWAS</h2>
+                
+                <div class="card">
+                    <h3>1. Cross-Species Enrichment Analysis</h3>
+                    <p>Test whether gene sets from model organisms (mouse, rat) show significant enrichment in human GWAS, revealing evolutionarily conserved mechanisms.</p>
+                </div>
+                
+                <div class="card">
+                    <h3>2. Tissue and Cell-Type Specificity</h3>
+                    <p>Identify which tissues and cell types are most relevant for your trait using pre-computed annotations from GTEx, Roadmap Epigenomics, and specialized datasets.</p>
+                </div>
+                
+                <div class="card">
+                    <h3>3. Functional Category Partitioning</h3>
+                    <p>Understand how heritability distributes across different genomic features, even for highly polygenic traits.</p>
+                </div>
+                
+                <div class="card">
+                    <h3>4. Gene Set Prioritization</h3>
+                    <p>Rank candidate gene sets by their enrichment significance to prioritize biological pathways for further investigation.</p>
+                </div>
+                
+                <div class="highlight">
+                    <p><strong>Example from our paper:</strong> Using CONSILIENCE-GWAS, we discovered that binge drinking gene sets from mouse models showed significant enrichment in human alcohol consumption GWAS (enrichment = 1.41, FDR < 0.05), particularly in striatal-prefrontal-ventral tegmental regions.</p>
+                </div>
+            </section>
+            
+            <section id="resources">
+                <h2>Learning Resources</h2>
+                
+                <div class="card">
+                    <h3>Key Papers</h3>
+                    <ul class="resources-list">
+                        <li><a href="https://www.nature.com/articles/ng.3404" target="_blank">Finucane et al. (2015) - Partitioning heritability by functional annotation</a></li>
+                        <li><a href="https://pubmed.ncbi.nlm.nih.gov/25642630/" target="_blank">Bulik-Sullivan et al. (2015) - LD Score regression distinguishes confounding from polygenicity</a></li>
+                        <li><a href="https://pubmed.ncbi.nlm.nih.gov/25439723/" target="_blank">Gusev et al. (2014) - Partitioning heritability of complex traits</a></li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3>Software & Tools</h3>
+                    <ul class="resources-list">
+                        <li><a href="https://github.com/bulik/ldsc" target="_blank">Official LDSC GitHub Repository</a></li>
+                        <li><a href="https://alkesgroup.broadinstitute.org/LDSCORE/" target="_blank">LDSC Web Portal</a></li>
+                        <li><a href="https://consilience.bgalab.emory.edu" target="_blank">CONSILIENCE-GWAS Web Platform</a></li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3>Tutorials & Guides</h3>
+                    <ul class="resources-list">
+                        <li><a href="https://github.com/bulik/ldsc/wiki/Heritability-and-Genetic-Correlation" target="_blank">LDSC Heritability Tutorial</a></li>
+                        <li><a href="https://github.com/bulik/ldsc/wiki/Partitioned-Heritability" target="_blank">Partitioned Heritability Tutorial</a></li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+</html>
