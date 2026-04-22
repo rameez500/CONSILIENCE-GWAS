@@ -57,26 +57,18 @@ ENSMUSG00000029545
 
 ## Repository Structure
 
-```mermaid
-graph TD
-    consilience-gwas[consilience-gwas/]
-    consilience-gwas --> web[web/<br/>Frontend HTML/CSS/JS]
-    consilience-gwas --> api[api/<br/>PHP endpoints]
-    consilience-gwas --> scripts[scripts/]
-    consilience-gwas --> config[config/<br/>Configuration templates]
-    consilience-gwas --> data[data/<br/>Reference data]
-    
-    scripts --> analysis[analysis/<br/>Bash orchestrators]
-    scripts --> python[python/<br/>Python modules]
-    scripts --> r[r/<br/>R scripts]
-    scripts --> ldsc[ldsc/<br/>LDSC integration]
-    
-    style consilience-gwas fill:#2c3e50,stroke:#3498db,stroke-width:2px,color:#fff
-    style web fill:#e8f4fc,stroke:#3498db
-    style api fill:#e8f4fc,stroke:#3498db
-    style scripts fill:#e8f4fc,stroke:#3498db
-    style config fill:#e8f4fc,stroke:#3498db
-    style data fill:#e8f4fc,stroke:#3498db
+```
+consilience-gwas/
+├── web/                    # Frontend HTML/CSS/JS
+├── api/                    # PHP endpoints for job submission
+├── scripts/                # Analysis scripts
+│   ├── analysis/           # Bash orchestrators
+│   ├── python/             # Python modules
+│   ├── r/                  # R scripts
+│   └── ldsc/               # LDSC integration
+├── config/                 # Configuration templates
+└── data/                   # Reference data (download separately)
+```
 
 
 
