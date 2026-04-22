@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete File Upload Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 15px;
+        }
+        .form-group {
+            margin-bottom: 25px;
+            padding: 20px;
+            border: 1px solid #eaeaea;
+            border-radius: 6px;
+            background: #fafafa;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 17px;
+        }
+        .label-help {
+            font-size: 14px;
+            margin-top: 5px;
+            line-height: 1.5;
+        }
+        .label-example {
+            color: #2980b9;
+            font-weight: 500;
+        }
+        .label-important {
+            color: #e74c3c;
+            font-weight: 500;
+        }
+        input[type="text"], input[type="file"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 15px;
+            margin-top: 10px;
+            margin-bottom: 8px;
+        }
+        input[type="text"]:focus, input[type="file"]:focus {
+            border-color: #3498db;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(52,152,219,0.2);
+        }
+        button {
+            background: linear-gradient(to bottom, #3498db, #2980b9);
+            color: white;
+            padding: 16px 45px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            display: block;
+            margin: 40px auto;
+            width: 100%;
+            max-width: 350px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(52,152,219,0.2);
+        }
+        button:hover {
+            background: linear-gradient(to bottom, #2980b9, #1c6ea4);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(52,152,219,0.3);
+        }
+        #message {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 6px;
+            display: none;
+        }
+        .success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        .error {
+            background: #fdeded;
+            border-left-color: #e74c3c;
+            color: #721c24;
+        }
+        .loading {
+            background: #e8f4fc;
+            border-left-color: #3498db;
+            color: #0c5460;
+        }
+        .required {
+            color: #e74c3c;
+        }
+        .optional {
+            color: #f39c12;
+        }
+        .file-upload-info {
+            background: #e8f4fc;
+            border: 1px solid #3498db;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .info-box {
+            margin-top: 30px;
+            padding: 15px;
+            background: #f0f8ff;
+            border-radius: 5px;
+            border-left: 4px solid #3498db;
+        }
+        code {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+        .validation-error {
+            background: #fdeded;
+            border: 1px solid #e74c3c;
+            color: #721c24;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 6px;
+        }
+        
+        .validation-error pre {
+            background: white;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            font-size: 13px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .section-divider {
+            border-top: 2px solid #eaeaea;
+            margin: 30px 0;
+        }
+        
+        .info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        
+        .info h2 {
+            color: #2c3e50;
+            border-bottom: 1px solid #dee2e6;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        
+        .info h3 {
+            color: #495057;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .info table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        .info table th {
+            background: #e9ecef;
+            padding: 10px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .info table td {
+            padding: 8px 10px;
+            border-bottom: 1px solid #dee2e6;
+            font-family: monospace;
+            background: #ffffff;
+        }
+        
+        .info table tr:hover {
+            background: #f1f3f5;
+        }
+        
+        .info pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        
+        .info ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .info ul li {
+            margin-bottom: 10px;
+            padding: 5px 0;
+        }
+        
+        .info a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .info a:hover {
+            text-decoration: underline;
+        }
+        
+        .example-note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 10px 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .example-note strong {
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Complete File Upload Test</h1>
+        
+        <form id="uploadForm">
+            <!-- Gene Set Files -->
+            <div class="form-group">
+                <label for="gene_files">1. Gene Set Files <span class="required">*</span></label>
+                <div class="label-help">Upload your gene list files (text files with one gene per line)</div>
+                <input type="file" id="gene_files" name="gene_files[]" multiple required accept=".txt,.csv,.tsv">
+                <div class="file-upload-info">
+                    <div class="label-help label-important">You can upload multiple files (one file per gene set)</div>
+                    <div class="label-help label-example">Supported formats: .txt</div>
+                    <!-- Added sample gene set download links -->
+                    <p style="margin-top: 15px; margin-bottom: 5px;">📥 <strong>Download sample gene datasets:</strong></p>
+                    <p style="margin-top: 0;">
+                        <a href="api/download_gene.php?file=GS407735_Alcohol_binge_EN.txt" style="color: #007bff; text-decoration: none; padding: 5px 10px; background: #e8f4fc; border-radius: 4px; display: inline-block; margin-right: 10px;">📄 Geneset_1</a>
+                        <a href="api/download_gene.php?file=GS407752_EN.txt" style="color: #007bff; text-decoration: none; padding: 5px 10px; background: #e8f4fc; border-radius: 4px; display: inline-block;">📄 Geneset_2</a>
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Gene Set Labels -->
+            <div class="form-group">
+                <label for="gene_labels">2. Gene Set Labels <span class="required">*</span></label>
+                <div class="label-help">Enter descriptive names for each gene set file</div>
+                <input type="text" id="gene_labels" name="gene_labels" placeholder="Example: Alcohol_Binge_Genes,EN_Genes" required>
+                <div class="label-help label-important">Important: Labels must match the order of uploaded files</div>
+                <div class="label-help label-example">Example: If you upload 2 files, provide 2 labels separated by commas</div>
+            </div>
+            
+            <!-- GWAS Summary Statistics -->
+            <div class="form-group">
+                <label for="sumstat_right">3. GWAS Summary Statistics File <span class="required">*</span></label>
+                <div class="label-help">Upload your GWAS results in compressed .gz format</div>
+                <input type="file" id="sumstat_right" name="sumstat_right" required accept=".gz">
+                <div class="label-help label-important">File must be compressed as .gz</div>
+            </div>
+            
+            <!-- GWAS Sample Size -->
+            <div class="form-group">
+                <label for="GWAS_N">4. GWAS Sample Size <span class="required">*</span></label>
+                <div class="label-help">Total number of individuals in your study</div>
+                <input type="text" id="GWAS_N" name="GWAS_N" placeholder="Example: 50000" required>
+                <div class="label-help label-example">Example: If your study had 50,000 participants, enter: 50000</div>
+            </div>
+            
+            <!-- Window Size -->
+            <div class="form-group">
+                <label for="window_size">5. Window Size (Buffer Region) <span class="required">*</span></label>
+                <div class="label-help">Distance around genes to include variants</div>
+                <input type="text" id="window_size" name="window_size" placeholder="Example: 10000 (for 10 kilobases)" required>
+                <div class="label-help label-important">Range: 100 to 100,000 base pairs</div>
+                <div class="label-help label-example">Common values: 10000 (10Kb), 50000 (50Kb), 100000 (100Kb)</div>
+            </div>
+            
+            <!-- Target BIM File -->
+            <div class="form-group">
+                <label for="target_bim">6. Target BIM File <span class="optional">(Optional)</span></label>
+                <div class="label-help">Required only for polygenic score (PGS) calculation</div>
+                <input type="file" id="target_bim" name="target_bim" accept=".gz">
+                <div class="label-help label-important">Only needed if you want PGS results</div>
+                <div class="label-help">Can be skipped if you only need enrichment analysis</div>
+            </div>
+            
+            <button type="button" id="uploadBtn">📤 Upload Files</button>
+        </form>
+        
+        <div id="message"></div>
+        
+        <!-- Response Container -->
+        <div id="responseContainer"></div>
+
+        <div class="section-divider"></div>
+
+        <div class="info">
+            <h2>📋 Input Format Requirements</h2>
+            
+            <!-- NEW: Geneset Format Section -->
+            <h3>🧬 Geneset Upload Format</h3>
+            <p>Gene set files should contain one gene identifier per line. Identifiers must be in Ensembl ID format only.</p>
+            
+            <p>Here's an example of a correctly formatted geneset upload file:</p>
+            <table style="width: 50%;">
+                <tbody>
+                    <tr>
+                        <td>ENSMUSG00000026842</td>
+                    </tr>
+                    <tr>
+                        <td>ENSMUSG00000026003</td>
+                    </tr>
+                    <tr>
+                        <td>ENSMUSG00000029545</td>
+                    </tr>
+                    <tr>
+                        <td>ENSMUSG00000023328</td>
+                    </tr>
+                    <tr>
+                        <td>ENSMUSG00000028405</td>
+                    </tr>
+                    <tr>
+                        <td>ENSMUSG00000026836</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            
+            <h3>📊 GWAS File Format</h3>
+            <p>Your GWAS file must include these 8 columns (in exact order):</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Column</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong style="color: #e74c3c;">SNP_ID</strong></td>
+                        <td>Variant identifier (rs number)</td>
+                        <td><span style="color: #2980b9;">rs11130222</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong style="color: #e74c3c;">CHR</strong></td>
+                        <td>Chromosome number (1-22)</td>
+                        <td><span style="color: #27ae60;">3</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong style="color: #e74c3c;">POS</strong></td>
+                        <td>Genomic position</td>
+                        <td><span style="color: #27ae60;">49901060</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong style="color: #e74c3c;">A1</strong></td>
+                        <td>Effect allele</td>
+                        <td><span style="color: #9b59b6;">A</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong style="color: #e74c3c;">A2</strong></td>
+                        <td>Other allele</td>
+                        <td><span style="color: #9b59b6;">T</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong style="color: #e74c3c;">Beta</strong></td>
+                        <td>Effect size</td>
+                        <td><span style="color: #2980b9;">0.026</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong style="color: #e74c3c;">SE</strong></td>
+                        <td>Standard error</td>
+                        <td><span style="color: #2980b9;">0.003</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong style="color: #e74c3c;">Pval</strong></td>
+                        <td>P-value</td>
+                        <td><span style="color: #e74c3c;">4.581e-25</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>📝 File Preparation Tips</h3>
+            <ul>
+                <li><span style="color: #27ae60;">✓</span> <strong>GWAS file format:</strong> Must be compressed as <code>.gz</code> file</li>
+                <li><span style="color: #27ae60;">✓</span> <strong>Header:</strong> First line must contain exactly these column names</li>
+                <li><span style="color: #f39c12;">⚠</span> <strong>Missing positions:</strong> If your file lacks chromosome/position, use <a href="https://github.com/rameez500/Map_RSID/tree/main" target="_blank">Map_RSID tool</a></li>
+                <li><span style="color: #f39c12;">⚠</span> <strong>Z-scores:</strong> Convert Z-scores to Beta/SE using <a href="https://cnsgenomics.com/data/teaching/GNGWS24/module1/6_summaryStats.pdf" target="_blank">this guide</a></li>
+                <li><span style="color: #27ae60;">✓</span> <strong>Gene set files:</strong> Plain text (.txt) with one gene ID per line</li>
+            </ul>
+
+            <h3>🗜️ How to Compress Your GWAS File</h3>
+            <p><strong style="color: #2980b9;">Using R:</strong></p>
+            <pre>
+# Save your data as a .gz file
+library(R.utils)
+write.table(your_data, "yourfile.txt", sep="\t", row.names=FALSE, col.names=TRUE, quote=FALSE)
+gzip("yourfile.txt", destname="yourfile.gz", overwrite=TRUE)
+            </pre>
+            <p><strong style="color: #2980b9;">Using Windows:</strong></p>
+            <p>Right-click file → 7-Zip → Add to archive → Select <code>.gz</code> format</p>
+        </div>
+    </div>
+
+    <script src="assets/js/desktop_update.js"></script>
+</body>
+</html>
