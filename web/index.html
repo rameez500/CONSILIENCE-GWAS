@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {font-family: Arial;}
+
+/* Style the tab */
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  margin-right: 20px; 
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+#FAQs {
+	margin-top: 150px; /* Add space above the entire content */
+}
+
+#Tutorial {
+	margin-top: 150px; /* Add space above the entire content */
+}
+
+#Tutorial_2 {
+	margin-top: 100px; /* Add space above the entire content */
+}
+
+
+#Geneweaver {
+	margin-top: 150px; /* Add space above the entire content */
+}
+
+#LDSC {
+	margin-top: 150px; /* Add space above the entire content */
+}
+
+#References {
+	margin-top: 150px; /* Add space above the entire content */
+}
+
+footer {
+	margin-top: 40px;
+	font-size: 14px;
+	color: #95a5a6;
+}
+
+h2 {
+	color: #2c3e50;
+	font-weight: 500;
+	margin-bottom: 20px;
+}
+		
+.citation {
+	margin-bottom: 20px;
+	padding: 10px;
+	background-color: #ffffff;
+	border-left: 4px solid #3498db;
+	box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.citation strong {
+	color: #2980b9;
+}
+
+
+</style>
+
+    <title>Educational Platform</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header id="navbar">
+         <div class="logo_label" > 
+		<p>
+            <span class="webespgs">CONSILIENCE-GWAS:</span> 
+            <span class="subtitle">Web-based Enrichment Specificity and Polygenic Score Derivation</span>
+		</p>
+		<!-- <div class="logo_label" style="position: absolute;> --> 
+        <!--    <img src="Logo_label/EU_BehavioralGenAddictionLab_hz_280bk.jpg" alt=""> -->
+        </div>
+		<div class="tab">
+		  <button class="tablinks" onclick="openCity(event, 'Home')" id="defaultOpen">Consilience</button>
+		  <button class="tablinks" onclick="openCity(event, 'Tutorial')">Overview</button>
+		  <button class="tablinks" onclick="openCity(event, 'Tutorial_2')">Tutorial</button>
+		   <button class="tablinks" onclick="openCity(event, 'Geneweaver')">Geneweaver</button>
+		   <button class="tablinks" onclick="openCity(event, 'LDSC')">LDSC</button>
+<!-- 		  <button class="tablinks" onclick="openCity(event, 'FAQs')">FAQs</button> -->
+		  <button class="tablinks" onclick="openCity(event, 'References')">Citation</button>
+		</div>
+    </header>
+
+    <!-- Hero Section -->
+<div id="Home" class="tabcontent">
+<body>
+
+
+	<section id="hero">
+<!-- 🔔 Important Notice Banner -->
+		<div class="hero-content">
+			<div class="hero-text">
+				<p class="hero-description">
+					CONSILIENCE-GWAS: Web-based Enrichment Specificity and Polygenic Score Analysis enables users to investigate tissue/cell-specific enrichment and polygenic scores (PGS). 
+					The platform calculates partitioned heritability, performs enrichment analysis for Genome-Wide Association Studies (GWAS), 
+					and generates results highlighting the contribution of genetic variants across different functional categories.
+				</p>
+				<p class="hero-description">
+					Additionally, CONSILIENCE-GWAS allows cross-species enrichment analysis by integrating gene sets from model organisms (e.g., mouse, rat) 
+					with human GWAS data, providing insights into how genetic signals from animal models relate to human traits.
+					Users receive detailed reports on tissue/cell-specific enrichments, cross-species comparisons, and the performance of PGS across various traits, with options to visualize and download the results.
+				</p>
+			</div>
+			<div class="hero-image-container">
+				<img src="Logo_label/CONSILIENCE_V2.png" alt="CONSILIENCE" class="hero-image">
+			</div>
+		</div>
+	</section>
+
+    <!-- Features Section -->
+    <section id="features">
+        <h2>Features</h2>
+        <div class="features-container">
+		    <a href="Geneweaver_upload.html" class="feature-card">
+    <img src="Logo_label/geneweaver_image.png" class="icon" alt="Interactive Exercises" style="width: 200px; height: auto; margin-top: 30px;">
+
+                <h3>Enter ID from Geneweaver and Upload GWAS from DeskTop </h3>
+            </a>
+			
+            <a href="desktop_upload.html" class="feature-card">
+                <img src="Logo_label/upload_2333350.png" class="icon" alt="Interactive Exercises">
+                <h3>Upload Genes Set and GWAS from DeskTop</h3>
+            </a>
+            <a href="display_results_3.php" class="feature-card">
+                <img src="Logo_label/job-offer_3985018.png" class="icon" alt="Interactive Exercises">
+                <h3>Job ID</h3>
+                <p>Enter your Job ID to view your results!</p>
+            </a>
+			
+        </div>
+		<br>
+		<p class="features-description">
+			*CONSILIENCE-GWAS is free and open to all users and there is no login requirement.
+		</p>
+		<p class="features-description">
+			*CONSILIENCE-GWAS was supported by a grant (DP1 DA042103) from the U.S. National Institutes of Health
+		</p>
+		<br>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works">
+        <!-- Latest Updates Section -->
+        <div class="updated-box">
+            <h3 style="margin: 0px;">Latest Updates</h3>
+            <br/>
+            <div class="latest-wrapper">
+                <div class="row el-row">
+                    <div class="time el-col el-col-4">August 8, 2024</div>
+                    <div class="desc el-col el-col-20">CONSILIENCE-GWAS 1.1 release (Integrated new GWAS summary statistics)</div>
+                </div>
+                <div class="row el-row">
+                    <div class="time el-col el-col-4">August 7, 2024</div>
+                    <div class="desc el-col el-col-20">Bug fix (Resolved Trait Name error)</div>
+                </div>
+                <div class="row el-row">
+                    <div class="time el-col el-col-4">August 6, 2024</div>
+                    <div class="desc el-col el-col-20">Bug fixes.</div>
+                </div>
+                <div class="row el-row">
+                    <div class="time el-col el-col-4">August 5, 2024</div>
+                    <div class="desc el-col el-col-20">CONSILIENCE-GWAS 1.0 release (online enrichment analysis tool.)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+	<!-- 
+        <div class="footer-links">
+            <a href="#home">Home</a>
+            <a href="#features">Features</a>
+            <a href="#Tutorial">Tutorial</a>
+            <a href="#Reference">Reference</a>
+            <a href="#contact">Contact</a>
+        </div>
+		-->
+		<!--
+        <div class="footer-social">
+            <a href="#"><ion-icon name="logo-facebook" class="icon" alt="Facebook"></ion-icon></a>
+            <a href="#"><ion-icon name="logo-twitter" class="icon" alt="Twitter"></ion-icon></a>
+            <a href="#"><ion-icon name="logo-linkedin" class="icon" alt="LinkedIn"></ion-icon></a>
+        </div>
+        <div class="footer-contact">
+            <p>Email: rasyed2@emory.edu</p>
+        </div>
+        <div class="newsletter-signup">
+            <button class="cta-btn">Subscribe/Donation</button>
+        </div>
+    </footer>
+	-->
+	
+<footer class="footer">
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <a href="https://scholarblogs.emory.edu/bgalab/" target="_blank">
+                    <img src="Logo_label/EU_BehavioralGenAddictionLab_hz_280bk.jpg" width="60%" alt="New Logo"> <!-- Changed width to 80% for a smaller image -->
+                </a>
+            </div>
+            <div class="col-md-9">
+                <p>
+                    <span style="font-size:1.20em;"><strong>Copyright ©</strong>
+                    <span> 2024-Present - 
+                        <a href="https://scholarblogs.emory.edu/bgalab/" class="footer-link">
+                            Behavioral Genetics of Addiction Laboratory
+                        </a><br>
+                    </span>
+                    </span>
+                </p>
+                <div class="footer-contact">
+                    <p>Email: rasyed2@emory.edu</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+ </body>
+</div>
+
+    <script src="assets/js/app.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <script>
+        // JavaScript to handle the scroll event and toggle the class
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('navbar');
+            if (window.scrollY > 5) { // Change 50 to the desired scroll threshold
+                header.classList.add('hidden');
+            } else {
+                header.classList.remove('hidden');
+            }
+        });
+    </script>
+
+<div id="Tutorial" class="tabcontent">
+	  <!--<img src="Logo_label/GWAS_S.png" alt="FlowChart" > -->
+	<div class="image-scroll-container" >
+        <img src="Logo_label/Figure 3.png" alt="FlowChartcdfdf" class="resized-image" />
+    </div>
+</div>
+
+
+<div id="Tutorial_2" class="tabcontent" >
+	  <!--<img src="Logo_label/GWAS_S.png" alt="FlowChart" > -->
+    <div class="image-scroll-container" >
+        <img src="Logo_label/ldsc_web_3.png" alt="FlowChart" />
+    </div>
+</div>
+
+
+
+<div id="Geneweaver" class="tabcontent"> </div>
+       <script>
+        fetch('tabs/Geneweaver.html')
+            .then(response => response.text())
+            .then(data => {
+                                const container = document.getElementById('Geneweaver');
+                                // Create a shadow root
+                                const shadowRoot = container.attachShadow({ mode: 'open' });
+                                // Insert the fetched HTML into the shadow root
+                                shadowRoot.innerHTML = data;
+            })
+            .catch(error => console.error('Error loading HTML:', error));
+    </script>
+
+<div id="LDSC" class="tabcontent"> </div>
+       <script>
+        fetch('tabs/LDSC_tutorial_V2.html')
+            .then(response => response.text())
+            .then(data => {
+                                const container = document.getElementById('LDSC');
+                                // Create a shadow root
+                                const shadowRoot = container.attachShadow({ mode: 'open' });
+                                // Insert the fetched HTML into the shadow root
+                                shadowRoot.innerHTML = data;
+            })
+            .catch(error => console.error('Error loading HTML:', error));
+    </script>
+	
+	
+<div id="FAQs" class="tabcontent">
+      <p style = "font-family:georgia,garamond,serif;font-size:16px;font-style:italic;">
+      <strong>1.Which build are the summary statistics and gene list based on?</strong>
+      </p>
+      <p style = "font-family:georgia,garamond,serif;font-size:16px;font-style:italic;">
+      Both the summary statistics and gene list are currently based on build 37.
+      We are in the process of updating to build 38.
+      </p>
+<br>
+      <p style = "font-family:georgia,garamond,serif;font-size:16px;font-style:italic;">
+      <strong>2. Is the summary statistic based on the human or mouse genome?</strong>
+      </p>
+      <p style = "font-family:georgia,garamond,serif;font-size:16px;font-style:italic;">
+      The gene list is based on the mouse genome, while the summary statistics are based on the human genome.
+      </p>
+
+<br>
+      <p style = "font-family:georgia,garamond,serif;font-size:16px;font-style:italic;">
+      <strong>3. How many megabytes can I upload?</strong>
+      </p>
+      <p style = "font-family:georgia,garamond,serif;font-size:16px;font-style:italic;">
+      You can upload files up to 100 megabytes in size.
+      </p>
+</div>
+
+
+
+<div id="References" class="tabcontent">
+<br>
+    <h2>Examples of Cross-species Functional Enrichment using LDSC</h2>
+    
+    <div class="citation">
+        <strong>Huggett SB, Johnson EC, Hatoum AS, Lai D, Srijeyanthan J, Bubier JA, Chesler EJ, Agrawal A, Palmer AA, Edenberg HJ, Palmer RHC.</strong> Genes identified in rodent studies of alcohol intake are enriched for heritability of human substance use. <span class="journal">Alcohol Clin Exp Res.</span> 2021 Dec; 45(12):2485-2494. <span class="doi">doi: 10.1111/acer.14738</span>. Epub 2021 Dec 19. PubMed PMID: 34751961; PubMed Central PMCID: PMC9714312.
+    </div>
+
+    <div class="citation">
+        <strong>Benca-Bachman, Chelsie E., Jason Bubier, Rameez A. Syed, Pamela N. Romero Villela, and Rohan HC Palmer.</strong> "Polygenic influences on the behavioral effects of alcohol withdrawal in a mixed-ancestry population from the collaborative study on the genetics of alcoholism (COGA)." <span class="journal">Molecular and Cellular Neuroscience</span> 125 (2023): 103851.
+    </div>
+
+    <h2>Example of Cross-species Functional Enrichment using raw data via GCTA</h2>
+    
+    <div class="citation">
+        <strong>Palmer RHC, Benca-Bachman CE, Huggett SB, Bubier JA, McGeary JE, Ramgiri N, Srijeyanthan J, Yang J, Visscher PM, Yang J, Knopik VS, Chesler EJ.</strong> Multi-omic and multi-species meta-analyses of nicotine consumption. <span class="journal">Transl Psychiatry.</span> 2021 Feb 4; 11(1):98. <span class="doi">doi: 10.1038/s41398-021-01231-y</span>. PubMed PMID: 33542196; PubMed Central PMCID: PMC7862377.
+    </div>
+
+    <h2>For Geneweaver:</h2>
+
+    <h2>For LDSC:</h2>
+    
+    <div class="citation">
+        <strong>Bulik-Sullivan, Brendan K., et al.</strong> "LD Score regression distinguishes confounding from polygenicity in genome-wide association studies." <span class="journal">Nature genetics</span> 47.3 (2015): 291-295.
+    </div>
+
+    <div class="citation">
+        <strong>Finucane, Hilary K., et al.</strong> "Partitioning heritability by functional annotation using genome-wide association summary statistics." <span class="journal">Nature genetics</span> 47.11 (2015): 1228-1235.
+    </div>
+
+<br>
+</div>
+
+
+
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+	
+</body>
+</html>
