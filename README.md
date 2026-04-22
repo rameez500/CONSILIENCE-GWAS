@@ -1,81 +1,88 @@
-# CONSILIENCE-GWAS Web Platform
 
-🌐 **Live Application**: [https://consilience.bgalab.emory.edu](https://consilience.bgalab.emory.edu)
+# CONSILIENCE-GWAS
 
-A web-based platform for cross-species functional enrichment analysis and polygenic scoring that integrates human GWAS with model organism data.
+**Web-based Parsed Heritability & Polygenic Score Analysis Using Heterogeneous Functional Genomics Data**
 
-## 🚀 Quick Access
+This is the server-side repository for CONSILIENCE-GWAS, an online web application to perform partitioned heritability enrichment analysis and polygenic score (PGS) derivation using heterogeneous functional genomics data. The application is available at [https://consilience.bgalab.emory.edu/](https://consilience.bgalab.emory.edu/).
 
-No installation required! Use our web interface:
+## Features
 
-**Main Application**: [https://consilience.bgalab.emory.edu](https://consilience.bgalab.emory.edu)
+- **Tissue/Cell-Specific Enrichment**: Investigate partitioned heritability across diverse functional categories
+- **Cross-Species Analysis**: Integrate gene sets from model organisms (mouse, rat) with human GWAS data
+- **Polygenic Score Calculation**: Compute PGS using PRS-CS with optional target BIM file upload
+- **Multiple Input Options**: Support for GeneWeaver IDs or custom gene set files
+- **Comprehensive Visualization**: Manhattan plots, enrichment plots, and interactive result browsing
+- **Cell-Type Group Analysis**: Pre-configured analyses for CNS, Cardiovascular, Liver, Immune, and other cell types
+- **External Data Integration**: GTEx, Cahoy (mouse brain), ImmGen (immune cells), and Roadmap Epigenomics
 
-## ✨ Features
+## Citation
 
-- **Cross-Species Enrichment Analysis**: Integrate gene sets from model organisms with human GWAS
-- **Tissue/Cell-Type Specificity**: Stratified LD Score Regression for functional annotations
-- **Polygenic Score Calculation**: Gene-set specific PGS using PRS-CS
-- **GeneWeaver Integration**: Direct API access to curated cross-species gene sets
-- **Interactive Visualizations**: High-resolution enrichment plots and results display
+When using CONSILIENCE-GWAS, please cite the following:
 
-## 🛠️ For Developers & Researchers
+> Syed R, Benca-Bachman CE, Huggett SB, McGeary JE, Bubier JA, Fisher H, Berger A, Baker E, Chesler EJ, Lind PA, Palmer RHC. CONSILIENCE-GWAS: A Web Resource for Parsed Heritability & Polygenic Score Analysis of Human GWAS Using Heterogeneous Functional Genomics Data. *medRxiv*. 2025. doi: [10.1101/2025.10.24.25338727](https://www.medrxiv.org/content/10.1101/2025.10.24.25338727v1)
 
-This repository contains the source code for the CONSILIENCE-GWAS web platform.
+## Input Format
 
-### Architecture Overview
+### GWAS Summary Statistics
+File must be compressed as `.gz` with exactly 8 tab-separated columns:
+
+| Column | Description | Example |
+|--------|-------------|---------|
+| SNP_ID | Variant identifier (rs number) | rs11130222 |
+| CHR | Chromosome number (1-22) | 3 |
+| POS | Genomic position | 49901060 |
+| A1 | Effect allele | A |
+| A2 | Other allele | T |
+| Beta | Effect size | 0.026 |
+| SE | Standard error | 0.003 |
+| Pval | P-value | 4.581e-25 |
+
+### Gene Set Files
+Plain text file (`.txt`) with one Ensembl ID per line:
+
+ENSMUSG00000026842
+ENSMUSG00000026003
+ENSMUSG00000029545
 
 
-**Key Components:**
-- `frontend/`: User interface files
-- `backend/php/`: PHP request handlers
-- `backend/scripts/`: Shell script orchestrators
-- `backend/r_scripts/`: R statistical analysis
-- `python_scripts/`: Python data processing
 
-### Core Analysis Pipeline
+## Technology Stack
 
-1. **User Input**: GWAS summary statistics + GeneWeaver gene sets
-2. **Processing**: `process_Gen_update.php` orchestrates analysis
-3. **Enrichment**: R scripts perform LDSC and statistical analysis
-4. **PGS Calculation**: PRS-CS implementation for polygenic scores
-5. **Visualization**: Interactive results display
+- **Backend**: PHP 7.4+ with custom framework
+- **Analysis Pipeline**: Bash scripts orchestrating Python and R modules
+- **LD Score Regression**: LDSC (Bulik-Sullivan et al. 2015)
+- **Polygenic Scoring**: PRS-CS
+- **Statistical Computing**: R (various packages), Python (NumPy, Pandas)
+- **Conda Environments**: Isolated environments for R, Python, and LDSC
 
-### Key Scripts
+## Repository Structure
 
-- `cell_geneWea_PGS.sh` - Main pipeline for enrichment + PGS
-- `cell_geneWea.sh` - Enrichment analysis only
-- `GeneWeaver_pipeline.py` - Cross-species gene set processing
-- `PGS_prscs.R` - Polygenic score calculation
+```mermaid
+graph TD
+    consilience-gwas[consilience-gwas/]
+    consilience-gwas --> web[web/<br/>Frontend HTML/CSS/JS]
+    consilience-gwas --> api[api/<br/>PHP endpoints]
+    consilience-gwas --> scripts[scripts/]
+    consilience-gwas --> config[config/<br/>Configuration templates]
+    consilience-gwas --> data[data/<br/>Reference data]
+    
+    scripts --> analysis[analysis/<br/>Bash orchestrators]
+    scripts --> python[python/<br/>Python modules]
+    scripts --> r[r/<br/>R scripts]
+    scripts --> ldsc[ldsc/<br/>LDSC integration]
+    
+    style consilience-gwas fill:#2c3e50,stroke:#3498db,stroke-width:2px,color:#fff
+    style web fill:#e8f4fc,stroke:#3498db
+    style api fill:#e8f4fc,stroke:#3498db
+    style scripts fill:#e8f4fc,stroke:#3498db
+    style config fill:#e8f4fc,stroke:#3498db
+    style data fill:#e8f4fc,stroke:#3498db
 
-## 📊 Example Usage
 
-Visit the web application and:
-1. Upload GWAS summary statistics
-2. Select GeneWeaver gene sets or upload custom sets
-3. Choose analysis type (enrichment, PGS, or both)
-4. View interactive results and download reports
 
-## 🐛 Support & Issues
 
-Found a bug or have questions?
-- 📧 **Email**: your-email@emory.edu
-- 🐛 **GitHub Issues**: [Open an Issue](https://github.com/yourusername/consilience-gwas-web/issues)
+## License
 
-## 📄 Citation
 
-If you use CONSILIENCE-GWAS in your research, please cite:
 
-> [Your publication reference here]
-
-## 🔧 Server Requirements
-
-- **Web Server**: Apache 2.4+
-- **PHP**: 8.0+
-- **R**: 4.0+ with key packages
-- **Python**: 3.8+
-- **Linux Environment**
-
-## 📜 License
-
-MIT License - see [LICENSE](LICENSE) for details.
 
