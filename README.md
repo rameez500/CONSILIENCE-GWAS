@@ -5,15 +5,24 @@
 
 This is the server-side repository for CONSILIENCE-GWAS, an online web application to perform partitioned heritability enrichment analysis and polygenic score (PGS) derivation using heterogeneous functional genomics data. The application is available at [https://consilience.bgalab.emory.edu/](https://consilience.bgalab.emory.edu/).
 
-## Features
+## Version Information
 
-- **Tissue/Cell-Specific Enrichment**: Investigate partitioned heritability across diverse functional categories
-- **Cross-Species Analysis**: Integrate gene sets from model organisms (mouse, rat) with human GWAS data
-- **Polygenic Score Calculation**: Compute PGS using PRS-CS with optional target BIM file upload
-- **Multiple Input Options**: Support for GeneWeaver IDs or custom gene set files
-- **Comprehensive Visualization**: Manhattan plots, enrichment plots, and interactive result browsing
-- **Cell-Type Group Analysis**: Pre-configured analyses for CNS, Cardiovascular, Liver, Immune, and other cell types
-- **External Data Integration**: GTEx, Cahoy (mouse brain), ImmGen (immune cells), and Roadmap Epigenomics
+| Component | Version |
+|-----------|---------|
+| **CONSILIENCE-GWAS** | v1.0 |
+| **Apache** | 2.4.58 |
+| **PHP** | 8.3.6 |
+| **Ubuntu** | 22.04+ |
+
+## Technology Stack
+
+![Apache](https://img.shields.io/badge/Apache-2.4.58-D22128?logo=apache&logoColor=white)
+![PHP](https://img.shields.io/badge/PHP-8.3.6-777BB4?logo=php&logoColor=white)
+![Ubuntu](https://img.shields.io/badge/Ubuntu-22.04-E95420?logo=ubuntu&logoColor=white)
+![Bash](https://img.shields.io/badge/Bash-5.1-4EAA25?logo=gnubash&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3.9+-3776AB?logo=python&logoColor=white)
+![R](https://img.shields.io/badge/R-4.2+-276DC3?logo=r&logoColor=white)
+
 
 ## Citation
 
@@ -40,20 +49,10 @@ File must be compressed as `.gz` with exactly 8 tab-separated columns:
 ### Gene Set Files
 Plain text file (`.txt`) with one Ensembl ID per line:
 
-ENSMUSG00000026842
-ENSMUSG00000026003
-ENSMUSG00000029545
+ENSMUSG00000026842 \
+ENSMUSG00000026003 \
+ENSMUSG00000029545 \
 
-
-
-## Technology Stack
-
-- **Backend**: PHP 7.4+ with custom framework
-- **Analysis Pipeline**: Bash scripts orchestrating Python and R modules
-- **LD Score Regression**: LDSC (Bulik-Sullivan et al. 2015)
-- **Polygenic Scoring**: PRS-CS
-- **Statistical Computing**: R (various packages), Python (NumPy, Pandas)
-- **Conda Environments**: Isolated environments for R, Python, and LDSC
 
 ## Repository Structure
 
