@@ -30,29 +30,6 @@ When using CONSILIENCE-GWAS, please cite the following:
 
 > Syed R, Benca-Bachman CE, Huggett SB, McGeary JE, Bubier JA, Fisher H, Berger A, Baker E, Chesler EJ, Lind PA, Palmer RHC. CONSILIENCE-GWAS: A Web Resource for Parsed Heritability & Polygenic Score Analysis of Human GWAS Using Heterogeneous Functional Genomics Data. *medRxiv*. 2025. doi: [10.1101/2025.10.24.25338727](https://www.medrxiv.org/content/10.1101/2025.10.24.25338727v1)
 
-## Input Format
-
-### GWAS Summary Statistics
-File must be compressed as `.gz` with exactly 8 tab-separated columns:
-
-| Column | Description | Example |
-|--------|-------------|---------|
-| SNP_ID | Variant identifier (rs number) | rs11130222 |
-| CHR | Chromosome number (1-22) | 3 |
-| POS | Genomic position | 49901060 |
-| A1 | Effect allele | A |
-| A2 | Other allele | T |
-| Beta | Effect size | 0.026 |
-| SE | Standard error | 0.003 |
-| Pval | P-value | 4.581e-25 |
-
-### Gene Set Files
-Plain text file (`.txt`) with one Ensembl ID per line:
-
-ENSMUSG00000026842 \
-ENSMUSG00000026003 \
-ENSMUSG00000029545 \
-
 
 ## Repository Structure
 
@@ -70,37 +47,10 @@ consilience-gwas/
 ```
 
 
-
-
 ## License
 
-CONSILIENCE-GWAS © 2025 by Rohan Palmer & Rameez Syed is licensed under 
+CONSILIENCE-GWAS © 2025 by  Rameez Syed & Rohan Palmer is licensed under 
 [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-nc-sa/4.0/).
-
-<div align="center">
-  
-[![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
-
-[![CC BY-NC-SA 4.0][cc-by-nc-sa-image]][cc-by-nc-sa]
-
-</div>
-
-[cc-by-nc-sa-shield]: https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg
-[cc-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/4.0/
-[cc-by-nc-sa-image]: https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png
-
-### You are free to:
-
-- **Share** — copy and redistribute the material in any medium or format
-- **Adapt** — remix, transform, and build upon the material
-
-### Under the following terms:
-
-- **Attribution** — You must give appropriate credit, provide a link to the license, and indicate if changes were made
-- **NonCommercial** — You may not use the material for commercial purposes
-- **ShareAlike** — If you remix, transform, or build upon the material, you must distribute your contributions under the same license
-
-
 
 
 
